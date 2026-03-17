@@ -9,7 +9,32 @@
   padding: var(--nav-h) 0 5rem;
   position: relative;
   z-index: 1;
+  background: linear-gradient(135deg, #0d2860 0%, #0a1a45 40%, #061230 100%);
+  overflow: hidden;
 }
+/* Grid texture overlay */
+.contact-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+/* Top glow orb */
+.contact-hero::after {
+  content: '';
+  position: absolute;
+  top: -80px; left: 10%; right: 10%;
+  height: 400px;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0,194,255,.1), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.contact-hero .container { position: relative; z-index: 1; }
 
 .contact-hero-inner {
   display: grid;
