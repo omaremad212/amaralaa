@@ -482,7 +482,7 @@ button { cursor: none; border: none; background: none; font: inherit; }
 }
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.875rem, 4.5vw, 3rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
   font-weight: 800;
   color: var(--white);
   line-height: 1.12;
@@ -804,7 +804,7 @@ button { cursor: none; border: none; background: none; font: inherit; }
 .cta-content { position: relative; z-index: 1; }
 .cta-title {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 4vw, 2.875rem);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: 900;
   color: var(--white);
   line-height: 1.1;
@@ -865,14 +865,68 @@ button { cursor: none; border: none; background: none; font: inherit; }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.04); font-size: .8rem; color: var(--text-muted); flex-wrap: wrap; gap: .5rem; }
 
 /* ══════════════════════════════════════════════════════
-   REVEAL ANIMATIONS
+   HERO ENTRANCE & FLOAT ANIMATIONS
+   ══════════════════════════════════════════════════════ */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFadeRight {
+  from { opacity: 0; transform: translateX(36px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes heroScan {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(300%); }
+}
+
+/* Hero left children staggered entrance */
+.hero-left > * {
+  opacity: 0;
+  animation: heroFadeUp .65s var(--ease) forwards;
+}
+.hero-left > :nth-child(1) { animation-delay: .1s; }
+.hero-left > :nth-child(2) { animation-delay: .22s; }
+.hero-left > :nth-child(3) { animation-delay: .34s; }
+.hero-left > :nth-child(4) { animation-delay: .46s; }
+.hero-left > :nth-child(5) { animation-delay: .58s; }
+
+/* Hero right entrance */
+.hero-right {
+  opacity: 0;
+  animation: heroFadeRight .9s var(--ease) .35s forwards;
+}
+
+/* Floating photo card */
+.hero-photo-card {
+  animation: heroFloat 5s ease-in-out infinite;
+}
+
+/* Scan-line shimmer across photo */
+.hero-photo-card::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 30%;
+  background: linear-gradient(to bottom, transparent, rgba(0,194,255,0.07), transparent);
+  animation: heroScan 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ══════════════════════════════════════════════════════
+   REVEAL ANIMATIONS (scroll-triggered sections)
    ══════════════════════════════════════════════════════ */
 .reveal-up, .reveal-left, .reveal-right {
-  opacity: 0; transition: opacity .35s ease, transform .35s ease;
+  opacity: 0; transition: opacity .3s ease, transform .3s ease;
 }
-.reveal-up    { transform: translateY(18px); }
-.reveal-left  { transform: translateX(-22px); }
-.reveal-right { transform: translateX(22px); }
+.reveal-up    { transform: translateY(16px); }
+.reveal-left  { transform: translateX(-20px); }
+.reveal-right { transform: translateX(20px); }
 .reveal-up.in-view, .reveal-left.in-view, .reveal-right.in-view { opacity: 1; transform: translate(0); }
 
 /* ══════════════════════════════════════════════════════
