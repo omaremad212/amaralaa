@@ -221,7 +221,7 @@
 
 /* ─── Animated Stat Counters ──────────────────────────── */
 (function initCounters() {
-  const nums = document.querySelectorAll('.stat-num[data-count]');
+  const nums = document.querySelectorAll('.stat-num[data-count], .pstat-num[data-count]');
   if (!nums.length) return;
 
   function countUp(el) {
