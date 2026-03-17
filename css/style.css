@@ -103,12 +103,36 @@ body:hover .cursor { opacity: 1; }
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
 }
-.logo-text {
+/* Logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  text-decoration: none;
+}
+.nav-logo-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(0, 194, 255, 0.45);
+  box-shadow: 0 0 14px rgba(0, 194, 255, 0.3);
+  flex-shrink: 0;
+}
+.logo-name {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.375rem;
   font-weight: 800;
   color: var(--white);
   letter-spacing: -0.03em;
+}
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  align-items: center;
 }
 .logo-dot { color: var(--blue-neon); }
 .nav-links {
@@ -293,16 +317,24 @@ body:hover .cursor { opacity: 1; }
   animation: pulse 2s infinite;
 }
 
+.hero-role {
+  font-size: .8125rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.75rem, 6vw, 5rem);
+  font-size: clamp(2.4rem, 4.5vw, 3.75rem);
   font-weight: 900;
   color: var(--white);
-  line-height: 1.05;
-  letter-spacing: -.04em;
+  line-height: 1.08;
+  letter-spacing: -.03em;
   margin-bottom: 1.5rem;
 }
-.hero-title .line { display: block; }
+.hero-dot { color: var(--blue-neon); }
 .hero-sub {
   font-size: 1.0625rem;
   color: var(--text);
@@ -998,6 +1030,16 @@ body:hover .cursor { opacity: 1; }
   color: var(--text-muted);
   flex-wrap: wrap;
   gap: .5rem;
+}
+
+/* ─── Glassmorphism Glow Lines ────────────────────────── */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  pointer-events: none;
 }
 
 /* ─── Reveal Animations ───────────────────────────────── */
