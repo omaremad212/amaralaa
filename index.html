@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ammar Alaa — Motion Designer & Video Editor</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ─── Cursor ─────────────────────────────────────────── -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- ─── Canvas Background ─────────────────────────────── -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- ─── Navbar ─────────────────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="logo-text">Ammar<span class="logo-dot">.</span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#motion" class="nav-link">Motion</a></li>
+      <li><a href="#video" class="nav-link">Video</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn-nav">Hire Me</a>
+    <button class="hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── HERO ──────────────────────────────────────────── -->
+  <section class="hero" id="hero">
+    <div class="hero-left">
+      <p class="hero-tag reveal-up">Available for freelance work</p>
+      <h1 class="hero-title reveal-up">
+        <span class="line">Crafting</span>
+        <span class="line">Visual <em class="glow-text">Stories</em></span>
+        <span class="line">That Move.</span>
+      </h1>
+      <p class="hero-sub reveal-up">
+        Hi, I'm <strong>Ammar Alaa</strong> — a Motion Designer &amp; Video Editor
+        who transforms ideas into cinematic experiences.
+      </p>
+      <div class="hero-cta reveal-up">
+        <a href="#motion" class="btn-primary">
+          <span>View My Work</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn-ghost">Let's Talk</a>
+      </div>
+      <div class="hero-stats reveal-up">
+        <div class="stat">
+          <span class="stat-num" data-count="50">0</span><span class="stat-plus">+</span>
+          <p>Projects Done</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-count="3">0</span><span class="stat-plus">+</span>
+          <p>Years Experience</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-count="20">0</span><span class="stat-plus">+</span>
+          <p>Happy Clients</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="mockup-grid">
+        <!-- Card 1 — large -->
+        <div class="mockup-card card-lg floating-1">
+          <div class="card-inner">
+            <div class="card-play">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="card-label">
+              <span class="card-tag">Motion Design</span>
+              <span class="card-title">Brand Identity Reel</span>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="mockup-card card-sm floating-2">
+          <div class="card-inner">
+            <div class="card-play">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="card-label">
+              <span class="card-tag">Video Edit</span>
+              <span class="card-title">Cinematic Cut</span>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="mockup-card card-md floating-3">
+          <div class="card-inner">
+            <div class="card-play">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="card-label">
+              <span class="card-tag">Motion Design</span>
+              <span class="card-title">Social Media Pack</span>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="mockup-card card-xs floating-4">
+          <div class="card-inner">
+            <div class="card-play">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="card-label">
+              <span class="card-tag">Video Edit</span>
+              <span class="card-title">Event Highlight</span>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+        </div>
+        <!-- Floating badge -->
+        <div class="badge-float floating-5">
+          <span class="badge-icon">✦</span>
+          <span>Motion Design</span>
+        </div>
+        <div class="badge-float badge-float-2 floating-6">
+          <span class="badge-icon">▶</span>
+          <span>Video Editing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─────────────────────────────────────────── -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-img-wrap reveal-left">
+            <div class="about-img-placeholder">
+              <div class="silhouette-glow"></div>
+              <div class="about-img-frame"></div>
+              <div class="about-initials">AA</div>
+            </div>
+            <div class="about-badge-wrap">
+              <div class="about-badge">
+                <span class="pulse"></span>
+                Open to Work
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-content reveal-right">
+          <p class="section-tag">About Me</p>
+          <h2 class="section-title">The Story Behind<br/>the <em class="glow-text">Frames</em></h2>
+          <p class="about-text">
+            I'm <strong>Ammar Alaa</strong>, a passionate Motion Designer and Video Editor based in Egypt.
+            I specialise in creating compelling visual narratives — from sleek motion graphics and brand
+            animations to cinematic video edits that leave an impact.
+          </p>
+          <p class="about-text">
+            Every frame I craft is intentional. Whether it's a 10-second social media reel or a full
+            brand identity film, I bring the same level of creativity, precision, and energy to the work.
+          </p>
+          <div class="about-tools">
+            <span class="tool-tag">After Effects</span>
+            <span class="tool-tag">Premiere Pro</span>
+            <span class="tool-tag">Photoshop</span>
+            <span class="tool-tag">Illustrator</span>
+            <span class="tool-tag">DaVinci Resolve</span>
+            <span class="tool-tag">Cinema 4D</span>
+          </div>
+          <div class="about-links">
+            <a href="https://www.instagram.com/the_blues0222" target="_blank" rel="noopener" class="social-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              @the_blues0222
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SKILLS ────────────────────────────────────────── -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <p class="section-tag">What I Do</p>
+        <h2 class="section-title">My <em class="glow-text">Expertise</em></h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card reveal-up" style="--delay:.1s">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.259a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
+            </svg>
+          </div>
+          <h3>Motion Design</h3>
+          <p>Brand animations, logo reveals, kinetic typography, social media motion graphics, and title sequences that bring your brand to life.</p>
+          <ul class="skill-list">
+            <li>Logo & Brand Animations</li>
+            <li>Kinetic Typography</li>
+            <li>Social Media Reels</li>
+            <li>Title Sequences</li>
+          </ul>
+        </div>
+        <div class="skill-card reveal-up" style="--delay:.2s">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M7 4v16M17 4v16M3 8h4m10 0h4M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/>
+            </svg>
+          </div>
+          <h3>Video Editing</h3>
+          <p>Cinematic edits, event highlight reels, promotional videos, YouTube content, and documentary-style cuts that tell compelling stories.</p>
+          <ul class="skill-list">
+            <li>Cinematic Edits</li>
+            <li>Event Highlights</li>
+            <li>Promo & Ad Videos</li>
+            <li>Color Grading</li>
+          </ul>
+        </div>
+        <div class="skill-card reveal-up" style="--delay:.3s">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="3"/><path d="M19.071 4.929L16.243 7.757M4.929 4.929L7.757 7.757M19.071 19.071l-2.828-2.828M4.929 19.071l2.828-2.828M12 2v3M12 19v3M2 12h3M19 12h3"/>
+            </svg>
+          </div>
+          <h3>Visual Effects</h3>
+          <p>Compositing, visual effects, green screen removal, particle systems, and post-production magic that elevates every scene.</p>
+          <ul class="skill-list">
+            <li>Compositing</li>
+            <li>VFX Integration</li>
+            <li>Green Screen</li>
+            <li>Particle FX</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MOTION DESIGN PROJECTS ────────────────────────── -->
+  <section class="projects section" id="motion">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <p class="section-tag">Portfolio</p>
+        <h2 class="section-title">Motion <em class="glow-text">Design</em></h2>
+        <p class="section-desc">A selection of motion graphics and animation projects — more coming soon.</p>
+      </div>
+      <div class="projects-grid" id="motionGrid">
+        <!-- ── ADD MOTION PROJECTS HERE ── -->
+        <!-- Example card structure (duplicate and fill with real project data):
+        <div class="project-card">
+          <div class="project-thumb">
+            <video src="assets/motion/project1.mp4" muted loop playsinline></video>
+            <div class="project-overlay">
+              <button class="play-btn">▶</button>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-cat">Motion Design</span>
+            <h3 class="project-name">Project Name</h3>
+            <p class="project-desc">Brief description of the project.</p>
+          </div>
+        </div>
+        -->
+        <div class="coming-soon-card">
+          <div class="cs-icon">✦</div>
+          <h3>Projects Coming Soon</h3>
+          <p>Motion design projects will be added here. Stay tuned!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── VIDEO EDITING PROJECTS ────────────────────────── -->
+  <section class="projects section section-alt" id="video">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <p class="section-tag">Portfolio</p>
+        <h2 class="section-title">Video <em class="glow-text">Editing</em></h2>
+        <p class="section-desc">Cinematic edits, highlight reels, and storytelling videos — crafted with precision.</p>
+      </div>
+      <div class="projects-grid" id="videoGrid">
+        <!-- ── ADD VIDEO EDITING PROJECTS HERE ── -->
+        <!-- Example card structure (duplicate and fill with real project data):
+        <div class="project-card">
+          <div class="project-thumb">
+            <video src="assets/video/project1.mp4" muted loop playsinline></video>
+            <div class="project-overlay">
+              <button class="play-btn">▶</button>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-cat">Video Edit</span>
+            <h3 class="project-name">Project Name</h3>
+            <p class="project-desc">Brief description of the project.</p>
+          </div>
+        </div>
+        -->
+        <div class="coming-soon-card">
+          <div class="cs-icon">▶</div>
+          <h3>Projects Coming Soon</h3>
+          <p>Video editing projects will be added here. Stay tuned!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ───────────────────────────────────────── -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-content reveal-left">
+          <p class="section-tag">Get In Touch</p>
+          <h2 class="section-title">Let's Create<br/><em class="glow-text">Something</em><br/>Together</h2>
+          <p class="contact-text">
+            Have a project in mind? Whether it's a brand animation, a promo video, or a full creative
+            campaign — I'd love to hear about it. Drop me a message and let's get started.
+          </p>
+          <div class="contact-socials">
+            <a href="https://www.instagram.com/the_blues0222" target="_blank" rel="noopener" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+        <form class="contact-form reveal-right" id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <option value="motion">Motion Design</option>
+              <option value="video">Video Editing</option>
+              <option value="vfx">Visual Effects</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full">
+            <span>Send Message</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-logo">
+          <span class="logo-text">Ammar<span class="logo-dot">.</span></span>
+          <p>Motion Designer & Video Editor</p>
+        </div>
+        <nav class="footer-nav">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#motion">Motion</a>
+          <a href="#video">Video</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/the_blues0222" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Ammar Alaa. All rights reserved.</p>
+        <p>Motion Design & Video Editing</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
