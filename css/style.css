@@ -265,7 +265,42 @@ button { cursor: none; border: none; background: none; font: inherit; }
   gap: 4rem;
   position: relative;
   z-index: 1;
+  /* Subtle dot grid */
+  background-image: radial-gradient(rgba(0,194,255,0.055) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
+
+/* Large cyan glow — top right (behind photo) */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -80px;
+  width: 680px; height: 680px;
+  background: radial-gradient(circle, rgba(0,194,255,0.11) 0%, rgba(26,111,255,0.06) 35%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: heroBgPulse 15s ease-in-out infinite;
+}
+/* Smaller blue glow — bottom left */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -80px;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(26,111,255,0.09) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: heroBgPulse 20s ease-in-out infinite reverse;
+}
+@keyframes heroBgPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.12); }
+}
+/* Ensure content sits above bg pseudo-elements */
+.hero-left  { position: relative; z-index: 1; }
+.hero-right { position: relative; z-index: 1; }
 
 .hero-left { flex: 1; max-width: 580px; }
 
@@ -332,14 +367,14 @@ button { cursor: none; border: none; background: none; font: inherit; }
   align-items: center;
   gap: 1rem;
   width: 100%;
-  max-width: 320px;
+  max-width: 420px;
 }
 
 .hero-photo-card {
   position: relative;
   width: 100%;
-  max-width: 320px;
-  aspect-ratio: 3/4;
+  max-width: 420px;
+  aspect-ratio: 4/3;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(0, 194, 255, 0.2);
@@ -377,7 +412,7 @@ button { cursor: none; border: none; background: none; font: inherit; }
 .hero-photo {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   display: block;
 }
 .hero-photo-glow {
