@@ -2,6 +2,26 @@
    About Page — Specific Styles
    ══════════════════════════════════════════════════════ */
 
+/* ─── About Hero Entrance Animations ─────────────────── */
+.about-hero-text > * {
+  opacity: 0;
+  animation: heroFadeUp .65s var(--ease) forwards;
+}
+.about-hero-text > :nth-child(1) { animation-delay: .1s; }
+.about-hero-text > :nth-child(2) { animation-delay: .22s; }
+.about-hero-text > :nth-child(3) { animation-delay: .34s; }
+.about-hero-text > :nth-child(4) { animation-delay: .46s; }
+
+.about-hero-visual {
+  opacity: 0;
+  animation: heroFadeRight .9s var(--ease) .35s forwards;
+}
+
+/* Profile card continuous float */
+.profile-card {
+  animation: heroFloat 5s ease-in-out infinite;
+}
+
 /* ─── About Hero ──────────────────────────────────────── */
 .about-hero {
   min-height: 100vh;
@@ -19,7 +39,7 @@
 }
 .about-hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(1.875rem, 4vw, 3rem);
   font-weight: 900;
   color: var(--white);
   line-height: 1.08;
@@ -315,7 +335,7 @@
 }
 .cta-title {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: 900;
   color: var(--white);
   letter-spacing: -.03em;
