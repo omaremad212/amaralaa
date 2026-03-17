@@ -92,7 +92,7 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0, rootMargin: '0px' });
+  }, { threshold: 0, rootMargin: '0px 0px 80px 0px' });
 
   // Stagger siblings
   const groups = {};
@@ -103,7 +103,7 @@
   });
   Object.values(groups).forEach(group => {
     group.forEach((el, i) => {
-      if (!el.dataset.delay) el.dataset.delay = i * 0.08;
+      if (!el.dataset.delay) el.dataset.delay = i * 0.04;
     });
   });
 
