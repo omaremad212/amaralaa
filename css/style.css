@@ -833,11 +833,11 @@ button { cursor: none; border: none; background: none; font: inherit; }
    REVEAL ANIMATIONS
    ══════════════════════════════════════════════════════ */
 .reveal-up, .reveal-left, .reveal-right {
-  opacity: 0; transition: opacity .5s ease, transform .5s ease;
+  opacity: 0; transition: opacity .35s ease, transform .35s ease;
 }
-.reveal-up    { transform: translateY(22px); }
-.reveal-left  { transform: translateX(-28px); }
-.reveal-right { transform: translateX(28px); }
+.reveal-up    { transform: translateY(18px); }
+.reveal-left  { transform: translateX(-22px); }
+.reveal-right { transform: translateX(22px); }
 .reveal-up.in-view, .reveal-left.in-view, .reveal-right.in-view { opacity: 1; transform: translate(0); }
 
 /* ══════════════════════════════════════════════════════
@@ -877,16 +877,9 @@ button { cursor: none; border: none; background: none; font: inherit; }
   .hero-right { max-width: 320px; width: 100%; }
   .hero-float-cards { max-width: 100%; }
 
-  /* ── Mobile Navbar: center logo, hamburger right, hide nav-right ── */
-  .navbar { justify-content: center; position: relative; }
+  /* ── Mobile Navbar: logo left (space-between), hamburger right, hide nav-right ── */
   .nav-right { display: none; }
-  .hamburger {
-    display: flex;
-    position: absolute;
-    right: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+  .hamburger { display: flex; }
 
   .nav-links {
     /* Always in DOM — controlled by opacity/transform */
@@ -963,6 +956,9 @@ button { cursor: none; border: none; background: none; font: inherit; }
   .footer-social { justify-content: center; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .section { padding: 4.5rem 0; }
+  /* Footer: hide "Ammar." text, center logo image only */
+  .footer-logo { justify-content: center; }
+  .footer-logo-text { display: none; }
 }
 
 @media (max-width: 480px) {

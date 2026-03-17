@@ -92,7 +92,7 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+  }, { threshold: 0, rootMargin: '0px' });
 
   // Stagger siblings
   const groups = {};
