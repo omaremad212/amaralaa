@@ -83,9 +83,8 @@
   if (!els.length) return;
 
   const observer = new IntersectionObserver(entries => {
-    entries.forEach((entry, i) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Stagger children inside same parent
         const delay = entry.target.dataset.delay || 0;
         setTimeout(() => {
           entry.target.classList.add('in-view');
@@ -93,7 +92,7 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
 
   // Stagger siblings
   const groups = {};
@@ -104,7 +103,7 @@
   });
   Object.values(groups).forEach(group => {
     group.forEach((el, i) => {
-      if (!el.dataset.delay) el.dataset.delay = i * 0.12;
+      if (!el.dataset.delay) el.dataset.delay = i * 0.08;
     });
   });
 
@@ -247,6 +246,45 @@
       }, 3000);
     }, 1200);
   });
+})();
+
+/* ─── Circular Favicon via Canvas ────────────────────── */
+(function initCircularFavicon() {
+  const link = document.querySelector('link[rel="icon"]');
+  if (!link) return;
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = function () {
+    const size = 64;
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    ctx.beginPath();
+    ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+    ctx.closePath();
+    ctx.clip();
+    ctx.drawImage(img, 0, 0, size, size);
+    link.type = 'image/png';
+    link.href = canvas.toDataURL('image/png');
+  };
+  img.src = 'assets/ammar-profile.jpg';
+})();
+
+/* ─── Expertise Accordion ─────────────────────────────── */
+(function initExpertiseAccordion() {
+  const items = document.querySelectorAll('.ea-item');
+  if (!items.length) return;
+  items.forEach(item => {
+    const trigger = item.querySelector('.ea-trigger');
+    if (!trigger) return;
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      items.forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+  // Open first by default
+  if (items[0]) items[0].classList.add('open');
 })();
 
 /* ─── Project Video Hover Play ────────────────────────── */
