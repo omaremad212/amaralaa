@@ -298,6 +298,70 @@
   });
 })();
 
+/* ─── Hero Wavy Canvas Background ────────────────────── */
+(function initHeroWaves() {
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+
+  var ctx, w, h, nt, animId;
+
+  // Their brand palette
+  var waveColors = [
+    '#00c2ff',  // --blue-neon
+    '#1a6fff',  // --blue
+    '#0047cc',
+    '#00a3d9',
+    '#003db3',
+  ];
+
+  // simplex-noise v3 UMD exposes window.SimplexNoise
+  var simplex = (typeof SimplexNoise !== 'undefined') ? new SimplexNoise() : null;
+
+  function noise3D(x, y, z) {
+    if (simplex) return simplex.noise3D(x, y, z);
+    // fallback: sin-based pseudo-noise
+    return Math.sin(x * 0.8 + z * 3)       * 0.5 +
+           Math.sin(x * 0.4 + z * 2.1 + y * 10) * 0.3 +
+           Math.sin(x * 1.2 + z * 1.7)     * 0.2;
+  }
+
+  function resize() {
+    w = canvas.width  = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    ctx.filter = 'blur(10px)';
+  }
+
+  function drawWaves() {
+    nt += 0.002;
+    for (var i = 0; i < 5; i++) {
+      ctx.beginPath();
+      ctx.lineWidth   = 50;
+      ctx.strokeStyle = waveColors[i % waveColors.length];
+      for (var x = 0; x < w; x += 5) {
+        var y = noise3D(x / 800, 0.3 * i, nt) * 100;
+        ctx.lineTo(x, y + h * 0.5);
+      }
+      ctx.stroke();
+      ctx.closePath();
+    }
+  }
+
+  function render() {
+    ctx.fillStyle  = '#040d18';
+    ctx.globalAlpha = 0.5;
+    ctx.fillRect(0, 0, w, h);
+    drawWaves();
+    animId = requestAnimationFrame(render);
+  }
+
+  ctx = canvas.getContext('2d');
+  nt  = 0;
+  resize();
+  render();
+
+  window.addEventListener('resize', resize, { passive: true });
+})();
+
 /* ─── Smooth-scroll for nav links ─────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {

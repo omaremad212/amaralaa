@@ -65,39 +65,42 @@
 
   <!-- ─── HERO ──────────────────────────────────────────── -->
   <section class="hero" id="hero">
-    <div class="hero-left">
-      <p class="hero-tag">
-        <span class="hero-tag-dot"></span>
-        Available for freelance work
-      </p>
-      <h1 class="hero-title">
-        Motion Designer &amp; <em class="glow-text">Video Editor</em>
-      </h1>
-      <p class="hero-sub">
-        Turning ideas into <strong>cinematic experiences</strong> — through motion graphics,
-        visual effects, and powerful video editing.
-      </p>
-      <div class="hero-cta">
-        <a href="#motion" class="btn-primary">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          <span>View My Work</span>
-        </a>
-        <a href="contact.html" class="btn-ghost">Let's Talk</a>
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <p class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          Available for freelance work
+        </p>
+        <h1 class="hero-title">
+          Motion Designer &amp; <em class="glow-text">Video Editor</em>
+        </h1>
+        <p class="hero-sub">
+          Turning ideas into <strong>cinematic experiences</strong> — through motion graphics,
+          visual effects, and powerful video editing.
+        </p>
+        <div class="hero-cta">
+          <a href="#motion" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <span>View My Work</span>
+          </a>
+          <a href="contact.html" class="btn-ghost">Let's Talk</a>
+        </div>
       </div>
-    </div>
 
-    <div class="hero-right">
-      <div class="hero-photo-wrap">
-        <div class="hero-photo-card">
-          <img src="assets/ammar-profile.jpg" alt="Ammar Alaa" class="hero-photo" />
-          <div class="hero-photo-glow"></div>
-          <div class="hero-photo-badge">
-            <span class="pulse-green"></span>
-            Open to Work
+      <div class="hero-right">
+        <div class="hero-photo-wrap">
+          <div class="hero-photo-card">
+            <img src="assets/ammar-profile.jpg" alt="Ammar Alaa" class="hero-photo" />
+            <div class="hero-photo-glow"></div>
+            <div class="hero-photo-badge">
+              <span class="pulse-green"></span>
+              Open to Work
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </div><!-- /.hero-inner -->
   </section>
 
   <!-- ─── STATS SECTION ─────────────────────────────────── -->
@@ -353,6 +356,7 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/simplex-noise@3.0.1/simplex-noise.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
