@@ -65,7 +65,7 @@
 
   <!-- ─── HERO ──────────────────────────────────────────── -->
   <section class="hero" id="hero">
-    <canvas id="hero-canvas"></canvas>
+    <div class="hero-spotlight" id="heroSpotlight"></div>
     <div class="hero-inner">
       <div class="hero-left">
         <p class="hero-tag">
@@ -89,16 +89,7 @@
       </div>
 
       <div class="hero-right">
-        <div class="hero-photo-wrap">
-          <div class="hero-photo-card">
-            <img src="assets/ammar-profile.jpg" alt="Ammar Alaa" class="hero-photo" />
-            <div class="hero-photo-glow"></div>
-            <div class="hero-photo-badge">
-              <span class="pulse-green"></span>
-              Open to Work
-            </div>
-          </div>
-        </div>
+        <spline-viewer url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"></spline-viewer>
       </div>
     </div><!-- /.hero-inner -->
   </section>
@@ -356,7 +347,7 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/simplex-noise@3.0.1/simplex-noise.js"></script>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
