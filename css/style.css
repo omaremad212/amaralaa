@@ -262,14 +262,25 @@ button { cursor: none; border: none; background: none; font: inherit; }
   background: var(--bg);
 }
 
-/* Canvas sits behind everything */
-#hero-canvas {
+/* Spotlight — follows mouse cursor */
+.hero-spotlight {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  pointer-events: none;
+  border-radius: 50%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle at center,
+    rgba(0, 194, 255, 0.13) 0%,
+    rgba(26, 111, 255, 0.07) 40%,
+    transparent 70%
+  );
+  filter: blur(1px);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity .25s ease;
   z-index: 0;
 }
+.hero-spotlight.visible { opacity: 1; }
 
 /* Inner wrapper — constrains the flex content */
 .hero-inner {
@@ -341,63 +352,20 @@ button { cursor: none; border: none; background: none; font: inherit; }
 
 .hero-cta { display: flex; gap: .875rem; flex-wrap: wrap; }
 
-/* ─── Right column — Photo ────────────────────────────── */
+/* ─── Right column — Spline 3D ────────────────────────── */
 .hero-right {
   position: relative;
   z-index: 1;
-  flex-shrink: 0;
-}
-
-.hero-photo-wrap {
+  flex: 1;
+  min-height: 500px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 }
 
-.hero-photo-card {
-  position: relative;
-  width: 320px;
-  aspect-ratio: 3/4;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 194, 255, 0.25);
-  box-shadow: 0 0 80px rgba(0, 194, 255, 0.15), 0 30px 80px rgba(0,0,0,.6);
-}
-
-.hero-photo {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
-.hero-photo-glow {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(4,13,24,.7) 100%);
-  pointer-events: none;
-}
-.hero-photo-badge {
-  position: absolute;
-  bottom: 1.25rem;
-  left: 1.25rem;
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  padding: .45rem 1rem;
-  background: rgba(4, 13, 24, 0.85);
-  border: 1px solid rgba(0, 194, 255, 0.3);
-  border-radius: 100px;
-  font-size: .8rem;
-  font-weight: 600;
-  color: var(--white);
-  backdrop-filter: blur(12px);
-}
-.pulse-green {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: #00e676;
-  box-shadow: 0 0 6px #00e676;
-  animation: dotPulse 2s infinite;
+spline-viewer {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
 }
 
 /* ══════════════════════════════════════════════════════
@@ -835,23 +803,6 @@ button { cursor: none; border: none; background: none; font: inherit; }
   animation: heroFadeRight .9s var(--ease) .3s forwards;
 }
 
-/* Floating photo card */
-.hero-photo-card {
-  animation: heroFloat 5s ease-in-out infinite;
-}
-
-/* Scan-line shimmer across photo */
-.hero-photo-card::before {
-  content: '';
-  position: absolute;
-  left: 0; right: 0;
-  height: 30%;
-  background: linear-gradient(to bottom, transparent, rgba(0,194,255,0.07), transparent);
-  animation: heroScan 5s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 3;
-}
-
 /* ══════════════════════════════════════════════════════
    REVEAL ANIMATIONS (scroll-triggered sections)
    ══════════════════════════════════════════════════════ */
@@ -896,8 +847,8 @@ button { cursor: none; border: none; background: none; font: inherit; }
   .hero-tag  { margin: 0 auto 1.25rem; }
   .hero-sub  { margin-left: auto; margin-right: auto; }
   .hero-cta  { justify-content: center; }
-  .hero-right { width: 100%; display: flex; justify-content: center; }
-  .hero-photo-card { width: 260px; }
+  .hero-right { width: 100%; min-height: 360px; }
+  spline-viewer { min-height: 360px; }
 
   /* ── Mobile Navbar: logo left (space-between), hamburger right, hide nav-right ── */
   .nav-right { display: none; }
