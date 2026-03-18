@@ -298,47 +298,6 @@
   });
 })();
 
-/* ─── Services sticky stack — scale-down previous cards ── */
-(function initStickyServices() {
-  const panels = document.querySelectorAll('.svc-panel');
-  if (!panels.length) return;
-
-  function update() {
-    panels.forEach(function(panel) {
-      var card = panel.querySelector('.svc-card');
-      if (!card) return;
-
-      var rect       = panel.getBoundingClientRect();
-      var panelH     = panel.offsetHeight;
-      var vpH        = window.innerHeight;
-      var scrollRange = panelH - vpH;
-      if (scrollRange <= 0) return;
-
-      var scrolled = Math.min(scrollRange, Math.max(0, -rect.top));
-      var progress = scrolled / scrollRange; // 0 → 1
-
-      // Once 60% through the extra scroll space, gently shrink & blur
-      if (progress > 0.6) {
-        var t     = (progress - 0.6) / 0.4;
-        var scale = 1 - t * 0.04;
-        var blur  = t * 2;
-        var op    = 1 - t * 0.12;
-        card.style.transform = 'scale(' + scale.toFixed(4) + ')';
-        card.style.filter    = 'blur(' + blur.toFixed(2) + 'px)';
-        card.style.opacity   = op.toFixed(4);
-      } else {
-        card.style.transform = 'scale(1)';
-        card.style.filter    = 'blur(0)';
-        card.style.opacity   = '1';
-      }
-    });
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update, { passive: true });
-  update();
-})();
-
 /* ─── Smooth-scroll for nav links ─────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
