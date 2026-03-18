@@ -455,6 +455,231 @@ button { cursor: none; border: none; background: none; font: inherit; }
 .logo-dot  { color: var(--blue-neon); }
 
 /* ══════════════════════════════════════════════════════
+   SERVICES — Sticky stacking panels
+   ══════════════════════════════════════════════════════ */
+
+/* Each panel is 200 vh; card sticks to top for the full scroll */
+.services-section { position: relative; }
+.services-track   { position: relative; }
+
+.svc-panel {
+  height: 200vh;
+  position: relative;
+}
+/* Last panel only needs to be as tall as the viewport */
+.svc-panel-last { height: 100vh; }
+
+.svc-card {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  overflow: hidden;
+  will-change: transform;
+  transition: transform .4s var(--ease);
+  /* Each card has a slightly darker tint — stacking illusion */
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+/* Stacking z-index — later cards sit on top */
+.svc-card-1 { z-index: 10; background: #040d18; }
+.svc-card-2 { z-index: 20; background: #050e1b; }
+.svc-card-3 { z-index: 30; background: #04101e; }
+.svc-card-4 { z-index: 40; background: #050f1c; }
+
+/* Subtle cyan glow line at top of each card */
+.svc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue-neon), transparent);
+  opacity: .5;
+}
+
+/* ─── Inner layout (3 columns) ──────────────────────── */
+.svc-inner {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 5rem;
+}
+
+/* ─── Left col: counter + visual thumbnail ─────────── */
+.svc-left {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.svc-counter {
+  font-family: var(--font-display);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.svc-visual {
+  width: 220px;
+  height: 220px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  transition: border-color .4s var(--ease);
+}
+.svc-card:hover .svc-visual { border-color: var(--border-blue); }
+.svc-visual svg { width: 100%; height: 100%; }
+
+/* Soft glow behind each visual */
+.svc-visual-1::after,
+.svc-visual-2::after,
+.svc-visual-3::after,
+.svc-visual-4::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0,194,255,0.07), transparent 70%);
+  pointer-events: none;
+}
+
+/* ─── Body: label + title + desc + CTA ─────────────── */
+.svc-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.svc-label {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--blue-neon);
+  margin-bottom: .875rem;
+}
+
+.svc-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.0;
+  letter-spacing: -.04em;
+  margin-bottom: 1.25rem;
+}
+
+.svc-desc {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.7;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.svc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--bg-card-2);
+  border: 1px solid var(--border-blue);
+  padding: .75rem 1.5rem;
+  border-radius: 100px;
+  transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+.svc-cta svg { width: 16px; height: 16px; transition: transform var(--transition); }
+.svc-cta:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  box-shadow: 0 0 24px rgba(26,111,255,.35);
+}
+.svc-cta:hover svg { transform: translate(2px, -2px); }
+
+/* ─── Right col: bullet list ────────────────────────── */
+.svc-list {
+  flex-shrink: 0;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: .875rem;
+}
+
+.svc-item {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: .9375rem;
+  font-weight: 500;
+  color: var(--text);
+  padding: .75rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: border-color var(--transition), color var(--transition);
+}
+.svc-item:hover { border-color: rgba(0,194,255,.2); color: var(--white); }
+
+.svc-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue-neon);
+  box-shadow: 0 0 6px var(--blue-neon);
+  flex-shrink: 0;
+}
+
+/* ─── Bottom progress bar ───────────────────────────── */
+.svc-progress {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--border);
+}
+.svc-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--blue-neon));
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 12px rgba(0,194,255,.4);
+  transition: width .6s var(--ease);
+}
+
+/* ─── Responsive ────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .svc-inner { gap: 3rem; padding: 0 3rem; }
+  .svc-visual { width: 180px; height: 180px; }
+  .svc-list { width: 210px; }
+}
+@media (max-width: 860px) {
+  .svc-panel { height: auto; min-height: 100vh; }
+  .svc-panel-last { height: auto; min-height: 100vh; }
+  .svc-card { position: relative; height: auto; min-height: 100vh; padding: 5rem 0 4rem; }
+  .svc-inner { flex-direction: column; align-items: flex-start; gap: 2rem; padding: 0 1.5rem; }
+  .svc-left  { flex-direction: row; align-items: center; }
+  .svc-visual { width: 120px; height: 120px; }
+  .svc-list  { width: 100%; flex-direction: row; flex-wrap: wrap; gap: .5rem; }
+  .svc-item  { flex: 1 1 calc(50% - .5rem); }
+  .svc-title { font-size: clamp(2.5rem, 8vw, 3.5rem); }
+}
+
+/* ══════════════════════════════════════════════════════
    ABOUT SECTION
    ══════════════════════════════════════════════════════ */
 .about-grid {
