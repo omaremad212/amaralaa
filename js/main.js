@@ -298,38 +298,6 @@
   });
 })();
 
-/* ─── Hero Spotlight (mouse-following radial glow) ──────── */
-(function initHeroSpotlight() {
-  var hero      = document.getElementById('hero');
-  var spotlight = document.getElementById('heroSpotlight');
-  if (!hero || !spotlight) return;
-
-  var targetX = 0, targetY = 0;
-  var currentX = 0, currentY = 0;
-  var rafId;
-
-  hero.addEventListener('mouseenter', function() {
-    spotlight.classList.add('visible');
-  });
-  hero.addEventListener('mouseleave', function() {
-    spotlight.classList.remove('visible');
-  });
-  hero.addEventListener('mousemove', function(e) {
-    var rect = hero.getBoundingClientRect();
-    targetX = e.clientX - rect.left;
-    targetY = e.clientY - rect.top;
-  }, { passive: true });
-
-  (function animate() {
-    // spring-like lerp — matches framer-motion spring bounce:0
-    currentX += (targetX - currentX) * 0.1;
-    currentY += (targetY - currentY) * 0.1;
-    spotlight.style.left = currentX + 'px';
-    spotlight.style.top  = currentY + 'px';
-    rafId = requestAnimationFrame(animate);
-  })();
-})();
-
 /* ─── Smooth-scroll for nav links ─────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
