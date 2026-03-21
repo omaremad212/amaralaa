@@ -28,10 +28,10 @@
 
 /* ─── Reset ───────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; background: var(--bg); }
 body {
   font-family: var(--font-sans);
-  background: var(--bg);
+  background: transparent;   /* fixed site-bg is the page background */
   color: var(--text);
   overflow-x: hidden;
   cursor: none;
@@ -252,70 +252,59 @@ button { cursor: none; border: none; background: none; font: inherit; }
 .btn-full { width: 100%; justify-content: center; border-radius: var(--radius); }
 
 /* ══════════════════════════════════════════════════════
-   HERO — Two-column split + Ethereal Shadow background
+   SITE-WIDE ETHEREAL SHADOW BACKGROUND (fixed)
    ══════════════════════════════════════════════════════ */
-.hero {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
-  background: var(--bg);
-}
-
-/* ─── Ethereal background ─────────────────────────────── */
-.hero-bg {
-  position: absolute;
+.site-bg {
+  position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: -1;          /* behind all page content */
   overflow: hidden;
+  pointer-events: none;
 }
-.hero-bg-defs {
-  position: absolute;
-  width: 0; height: 0;
-  overflow: hidden;
-}
-/* Negative inset = displacementScale so clipping is avoided */
-.hero-bg-warp {
+.site-bg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* Extends beyond viewport to avoid displacement clipping */
+.site-bg-warp {
   position: absolute;
   inset: -100px;
-  filter: url(#ethereal-filter) blur(4px);
+  filter: url(#ethereal-filter) blur(3px);
+  will-change: filter;        /* promote to GPU compositing layer */
+  transform: translateZ(0);   /* force GPU layer creation         */
 }
-.hero-bg-shape {
+.site-bg-shape {
   width: 100%; height: 100%;
   background-color: rgba(10, 50, 120, 1);
   -webkit-mask-image: url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png');
-  mask-image: url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png');
-  -webkit-mask-size: cover;
-  mask-size: cover;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
+          mask-image: url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png');
+  -webkit-mask-size: cover; mask-size: cover;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
 }
-/* Noise grain overlay */
-.hero-bg-noise {
+.site-bg-noise {
   position: absolute;
   inset: 0;
   background-image: url('https://framerusercontent.com/images/g0QcWrxr87K0ufOxIUFBakwYA8.png');
-  background-size: 240px; /* noise.scale(1.2) × 200 */
+  background-size: 240px;
   background-repeat: repeat;
-  opacity: 0.5;            /* noise.opacity(1) ÷ 2   */
+  opacity: 0.5;
   pointer-events: none;
 }
 
-/* ─── Inner content wrapper (max-width constraint) ────── */
-.hero-inner {
-  position: relative;
-  z-index: 1;
+/* ══════════════════════════════════════════════════════
+   HERO — Two-column split (bg is handled by site-bg)
+   ══════════════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 4rem;
+  padding: var(--nav-h) 5rem 4rem;
   max-width: 1280px;
   margin: 0 auto;
-  padding: var(--nav-h) 5rem 4rem;
-  min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 /* ─── Left column ─────────────────────────────────────── */
@@ -436,7 +425,7 @@ button { cursor: none; border: none; background: none; font: inherit; }
    SECTIONS SHARED
    ══════════════════════════════════════════════════════ */
 .section { padding: 6.5rem 0; position: relative; z-index: 1; }
-.section-alt { background: var(--bg-2); }
+.section-alt { background: rgba(6, 15, 30, 0.88); }
 .section-header { text-align: center; margin-bottom: 3.5rem; }
 .section-tag {
   display: inline-block;
@@ -923,7 +912,7 @@ button { cursor: none; border: none; background: none; font: inherit; }
 }
 
 @media (max-width: 900px) {
-  .hero-inner { flex-direction: column; text-align: center; padding: calc(var(--nav-h) + 3rem) 1.5rem 3rem; min-height: 100vh; gap: 2.5rem; }
+  .hero { flex-direction: column; text-align: center; padding: calc(var(--nav-h) + 3rem) 1.5rem 3rem; min-height: 100vh; gap: 2.5rem; }
   .hero-left { max-width: 100%; }
   .hero-tag  { margin: 0 auto 1.25rem; }
   .hero-sub  { margin-left: auto; margin-right: auto; }

@@ -298,20 +298,24 @@
   });
 })();
 
-/* ─── Ethereal Shadow — animated hue rotation ──────────── */
+/* ─── Ethereal Shadow — animated hue rotation (30 fps) ─── */
 (function initEtherealBg() {
   var fhue = document.getElementById('ethereal-hue');
   if (!fhue) return;
-  // speed=90 → animationDuration ≈ 146 → cycle = 146/25 ≈ 5.84 s
+  // speed=90 → cycle ≈ 5.84 s per full 360° rotation
   var cycleDuration = 5840;
   var currentHue = 0;
   var lastTime   = null;
+  var frame      = 0;
   function tick(time) {
     if (lastTime === null) lastTime = time;
     var delta = time - lastTime;
     lastTime  = time;
     currentHue = (currentHue + 360 * delta / cycleDuration) % 360;
-    fhue.setAttribute('values', currentHue.toFixed(2));
+    // Update DOM only every 2nd frame → ~30 fps (animation is slow, imperceptible)
+    if (++frame % 2 === 0) {
+      fhue.setAttribute('values', currentHue.toFixed(1));
+    }
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
