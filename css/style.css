@@ -257,19 +257,27 @@ button { cursor: none; border: none; background: none; font: inherit; }
 .site-bg {
   position: fixed;
   inset: 0;
-  z-index: -1;          /* behind all page content */
+  z-index: -1;
   overflow: hidden;
   pointer-events: none;
+  contain: layout style paint;  /* isolate from the rest of the page */
 }
 .site-bg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
 
-/* Extends beyond viewport to avoid displacement clipping */
+/* ── KEY PERF FIX ──────────────────────────────────────────
+   SVG filters run on CPU per-pixel. Instead of filtering the
+   full viewport (~2M px), we filter a small 800×800 element
+   (640k px = 3× less work) then scale it up via GPU (free). */
 .site-bg-warp {
   position: absolute;
-  inset: -100px;
-  filter: url(#ethereal-filter) blur(3px);
-  will-change: filter;        /* promote to GPU compositing layer */
-  transform: translateZ(0);   /* force GPU layer creation         */
+  width: 800px;
+  height: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(5);  /* 4000px visual = covers any screen */
+  transform-origin: center;
+  filter: url(#ethereal-filter);
+  will-change: transform;   /* GPU composites the up-scaled texture */
 }
 .site-bg-shape {
   width: 100%; height: 100%;
