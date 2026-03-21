@@ -298,6 +298,25 @@
   });
 })();
 
+/* ─── Ethereal Shadow — animated hue rotation ──────────── */
+(function initEtherealBg() {
+  var fhue = document.getElementById('ethereal-hue');
+  if (!fhue) return;
+  // speed=90 → animationDuration ≈ 146 → cycle = 146/25 ≈ 5.84 s
+  var cycleDuration = 5840;
+  var currentHue = 0;
+  var lastTime   = null;
+  function tick(time) {
+    if (lastTime === null) lastTime = time;
+    var delta = time - lastTime;
+    lastTime  = time;
+    currentHue = (currentHue + 360 * delta / cycleDuration) % 360;
+    fhue.setAttribute('values', currentHue.toFixed(2));
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
 /* ─── Smooth-scroll for nav links ─────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
