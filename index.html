@@ -65,39 +65,69 @@
 
   <!-- ─── HERO ──────────────────────────────────────────── -->
   <section class="hero" id="hero">
-    <div class="hero-left">
-      <p class="hero-tag">
-        <span class="hero-tag-dot"></span>
-        Available for freelance work
-      </p>
-      <h1 class="hero-title">
-        Motion Designer &amp; <em class="glow-text">Video Editor</em>
-      </h1>
-      <p class="hero-sub">
-        Turning ideas into <strong>cinematic experiences</strong> — through motion graphics,
-        visual effects, and powerful video editing.
-      </p>
-      <div class="hero-cta">
-        <a href="#motion" class="btn-primary">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          <span>View My Work</span>
-        </a>
-        <a href="contact.html" class="btn-ghost">Let's Talk</a>
+
+    <!-- Ethereal shadow background -->
+    <div class="hero-bg" aria-hidden="true">
+      <svg class="hero-bg-defs">
+        <defs>
+          <filter id="ethereal-filter" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence id="ethereal-turbulence" result="undulation"
+              numOctaves="2" baseFrequency="0.0005,0.002"
+              seed="0" type="turbulence"/>
+            <feColorMatrix id="ethereal-hue" in="undulation"
+              type="hueRotate" values="180"/>
+            <feColorMatrix in="dist" result="circulation" type="matrix"
+              values="4 0 0 0 1  4 0 0 0 1  4 0 0 0 1  1 0 0 0 0"/>
+            <feDisplacementMap in="SourceGraphic" in2="circulation"
+              scale="100" result="dist"/>
+            <feDisplacementMap in="dist" in2="undulation"
+              scale="100" result="output"/>
+          </filter>
+        </defs>
+      </svg>
+      <div class="hero-bg-warp">
+        <div class="hero-bg-shape"></div>
       </div>
+      <div class="hero-bg-noise"></div>
     </div>
 
-    <div class="hero-right">
-      <div class="hero-photo-wrap">
-        <div class="hero-photo-card">
-          <img src="assets/ammar-profile.jpg" alt="Ammar Alaa" class="hero-photo" />
-          <div class="hero-photo-glow"></div>
-          <div class="hero-photo-badge">
-            <span class="pulse-green"></span>
-            Open to Work
+    <!-- Content -->
+    <div class="hero-inner">
+      <div class="hero-left">
+        <p class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          Available for freelance work
+        </p>
+        <h1 class="hero-title">
+          Motion Designer &amp; <em class="glow-text">Video Editor</em>
+        </h1>
+        <p class="hero-sub">
+          Turning ideas into <strong>cinematic experiences</strong> — through motion graphics,
+          visual effects, and powerful video editing.
+        </p>
+        <div class="hero-cta">
+          <a href="#motion" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <span>View My Work</span>
+          </a>
+          <a href="contact.html" class="btn-ghost">Let's Talk</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-photo-wrap">
+          <div class="hero-photo-card">
+            <img src="assets/ammar-profile.jpg" alt="Ammar Alaa" class="hero-photo" />
+            <div class="hero-photo-glow"></div>
+            <div class="hero-photo-badge">
+              <span class="pulse-green"></span>
+              Open to Work
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </div><!-- /.hero-inner -->
+
   </section>
 
   <!-- ─── STATS SECTION ─────────────────────────────────── -->
