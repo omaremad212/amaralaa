@@ -252,7 +252,8 @@ button { cursor: none; border: none; background: none; font: inherit; }
 .btn-full { width: 100%; justify-content: center; border-radius: var(--radius); }
 
 /* ══════════════════════════════════════════════════════
-   SITE-WIDE ETHEREAL SHADOW BACKGROUND (fixed)
+   SITE-WIDE ETHEREAL SHADOW BACKGROUND
+   100% GPU — CSS gradients + keyframes, zero SVG filters
    ══════════════════════════════════════════════════════ */
 .site-bg {
   position: fixed;
@@ -260,41 +261,42 @@ button { cursor: none; border: none; background: none; font: inherit; }
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  contain: layout style paint;  /* isolate from the rest of the page */
+  /* hue-rotate = GPU color-matrix on the composited layer, zero CPU cost */
+  animation: siteBgHue 8s linear infinite;
 }
-.site-bg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+@keyframes siteBgHue {
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(360deg); }
+}
 
-/* ── KEY PERF FIX ──────────────────────────────────────────
-   SVG filters run on CPU per-pixel. Instead of filtering the
-   full viewport (~2M px), we filter a small 800×800 element
-   (640k px = 3× less work) then scale it up via GPU (free). */
+/* Blurred gradient blob, slowly drifting via transform (always GPU) */
 .site-bg-warp {
   position: absolute;
-  width: 800px;
-  height: 800px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(5);  /* 4000px visual = covers any screen */
-  transform-origin: center;
-  filter: url(#ethereal-filter);
-  will-change: transform;   /* GPU composites the up-scaled texture */
+  inset: -50%;
+  background:
+    radial-gradient(ellipse 55% 45% at 30% 40%, rgba(10, 50, 160, 1)    0%, transparent 60%),
+    radial-gradient(ellipse 45% 55% at 68% 58%, rgba(6,  28, 110, 0.85) 0%, transparent 58%),
+    radial-gradient(ellipse 35% 35% at 52% 48%, rgba(18, 65, 200, 0.6)  0%, transparent 52%);
+  filter: blur(90px);
+  animation: siteBgDrift 20s ease-in-out infinite alternate;
+  will-change: transform;
 }
-.site-bg-shape {
-  width: 100%; height: 100%;
-  background-color: rgba(10, 50, 120, 1);
-  -webkit-mask-image: url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png');
-          mask-image: url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png');
-  -webkit-mask-size: cover; mask-size: cover;
-  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-  -webkit-mask-position: center; mask-position: center;
+@keyframes siteBgDrift {
+  0%   { transform: scale(1.00) rotate(0deg)    translate(0%,  0%); }
+  25%  { transform: scale(1.06) rotate(2deg)    translate(4%,  3%); }
+  50%  { transform: scale(1.03) rotate(-1.5deg) translate(-3%, 5%); }
+  75%  { transform: scale(1.07) rotate(3deg)    translate(3%, -4%); }
+  100% { transform: scale(1.04) rotate(-2deg)   translate(-4%, 2%); }
 }
+
+/* Grain overlay — static texture, one GPU upload */
 .site-bg-noise {
   position: absolute;
   inset: 0;
   background-image: url('https://framerusercontent.com/images/g0QcWrxr87K0ufOxIUFBakwYA8.png');
   background-size: 240px;
   background-repeat: repeat;
-  opacity: 0.5;
+  opacity: 0.4;
   pointer-events: none;
 }
 
