@@ -14,26 +14,7 @@
 
   <!-- ─── Ethereal Shadow — site-wide fixed background ───── -->
   <div class="site-bg" aria-hidden="true">
-    <svg class="site-bg-defs">
-      <defs>
-        <filter id="ethereal-filter" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
-          <feTurbulence id="ethereal-turbulence" result="undulation"
-            numOctaves="1" baseFrequency="0.0005,0.002"
-            seed="0" type="turbulence"/>
-          <feColorMatrix id="ethereal-hue" in="undulation"
-            type="hueRotate" values="180"/>
-          <feColorMatrix in="dist" result="circulation" type="matrix"
-            values="4 0 0 0 1  4 0 0 0 1  4 0 0 0 1  1 0 0 0 0"/>
-          <feDisplacementMap in="SourceGraphic" in2="circulation"
-            scale="100" result="dist"/>
-          <feDisplacementMap in="dist" in2="undulation"
-            scale="100" result="output"/>
-        </filter>
-      </defs>
-    </svg>
-    <div class="site-bg-warp">
-      <div class="site-bg-shape"></div>
-    </div>
+    <div class="site-bg-warp"></div>
     <div class="site-bg-noise"></div>
   </div>
 
