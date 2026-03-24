@@ -21,7 +21,7 @@
   --radius-sm:    10px;
   --nav-h:        76px;
   --font-sans:    'Inter', system-ui, sans-serif;
-  --font-display: 'Syne', 'Inter', sans-serif;
+  --font-display: 'Orbitron', 'Inter', sans-serif;
   --ease:         cubic-bezier(0.4, 0, 0.2, 1);
   --transition:   0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -353,11 +353,12 @@ button { cursor: none; border: none; background: none; font: inherit; }
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(1.875rem, 3.5vw, 3rem);
-  font-weight: 900;
+  font-size: clamp(1.5rem, 3vw, 2.6rem);
+  font-weight: 600;
   color: var(--white);
-  letter-spacing: -.03em;
-  line-height: 1.1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.2;
   margin-bottom: 1.25rem;
 }
 
@@ -448,11 +449,12 @@ button { cursor: none; border: none; background: none; font: inherit; }
 }
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-  font-weight: 800;
+  font-size: clamp(1.25rem, 3vw, 2.1rem);
+  font-weight: 700;
   color: var(--white);
-  line-height: 1.12;
-  letter-spacing: -.03em;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 .section-desc {
   margin-top: .875rem;
@@ -469,7 +471,7 @@ button { cursor: none; border: none; background: none; font: inherit; }
 }
 
 /* Helper */
-.logo-name { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; color: var(--white); letter-spacing: -.02em; }
+.logo-name { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--white); letter-spacing: 0.1em; text-transform: uppercase; }
 .logo-dot  { color: var(--blue-neon); }
 
 /* ══════════════════════════════════════════════════════
