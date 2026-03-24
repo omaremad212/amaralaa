@@ -261,13 +261,8 @@ button { cursor: none; border: none; background: none; font: inherit; }
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  /* hue-rotate = GPU color-matrix on the composited layer, zero CPU cost */
-  animation: siteBgHue 8s linear infinite;
 }
-@keyframes siteBgHue {
-  from { filter: hue-rotate(0deg); }
-  to   { filter: hue-rotate(360deg); }
-}
+
 
 /* Blurred gradient blob, slowly drifting via transform (always GPU) */
 .site-bg-warp {
