@@ -87,7 +87,9 @@ button { cursor: none; border: none; background: none; font: inherit; }
   z-index: 100;
   border-bottom: 1px solid transparent;
   transition: background var(--transition), border-color var(--transition), backdrop-filter var(--transition);
+  cursor: auto;
 }
+.navbar *, .navbar a, .navbar button { cursor: auto; }
 .navbar.scrolled {
   background: rgba(4, 13, 24, 0.92);
   backdrop-filter: blur(24px);

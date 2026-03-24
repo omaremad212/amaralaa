@@ -47,6 +47,19 @@
       follower.style.borderColor = 'rgba(0,194,255,0.5)';
     });
   });
+
+  // Hide custom cursor when over the nav
+  const nav = document.querySelector('.navbar');
+  if (nav) {
+    nav.addEventListener('mouseenter', () => {
+      cursor.style.opacity   = '0';
+      follower.style.opacity = '0';
+    });
+    nav.addEventListener('mouseleave', () => {
+      cursor.style.opacity   = '1';
+      follower.style.opacity = '1';
+    });
+  }
 })();
 
 /* ─── Navbar scroll effect ────────────────────────────── */
