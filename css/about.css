@@ -39,11 +39,12 @@
 }
 .about-hero-title {
   font-family: var(--font-display);
-  font-size: clamp(1.875rem, 4vw, 3rem);
-  font-weight: 900;
+  font-size: clamp(1.5rem, 3.5vw, 2.6rem);
+  font-weight: 600;
   color: var(--white);
-  line-height: 1.08;
-  letter-spacing: -.03em;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   margin: .75rem 0 1.5rem;
 }
 .about-hero-sub {
@@ -139,10 +140,11 @@
 }
 .profile-info h2 {
   font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--white);
-  letter-spacing: -.02em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   margin-bottom: .25rem;
 }
 .profile-info p {
@@ -335,11 +337,12 @@
 }
 .cta-title {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: 900;
+  font-size: clamp(1.25rem, 2.5vw, 1.9rem);
+  font-weight: 700;
   color: var(--white);
-  letter-spacing: -.03em;
-  line-height: 1.1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.2;
   margin: .75rem 0 1rem;
   position: relative;
 }
